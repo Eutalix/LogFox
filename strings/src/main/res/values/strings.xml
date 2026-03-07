@@ -174,4 +174,20 @@
     <string name="monet" translatable="false">Monet</string>
     <string name="share_logs">Share logs</string>
     <string name="case_sensitive">Case sensitive</string>
+    
+    <!-- Remote Devices -->
+    <string name="remote_devices">Remote Devices</string>
+    <string name="no_remote_devices">No remote devices added</string>
+    <string name="add_device">Add Device</string>
+    <string name="edit_device">Edit Device</string>
+    <string name="device_name">Device Name (optional)</string>
+    <string name="host">Host (IP address)</string>
+    <string name="port">Port</string>
+    <string name="connect">Connect</string>
+    <string name="disconnect">Disconnect</string>
+    <string name="start_logging">Start Logging</string>
+    <string name="remote_device_hint">Make sure the target device has ADB over TCP/IP enabled.\n\nRun on the target device:\nadb tcpip 5555</string>
+    <string name="connecting">Connecting…</string>
+    <string name="connected">Connected</string>
+    <string name="connection_failed">Connection failed</string>
 </resources>

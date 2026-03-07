@@ -78,6 +78,9 @@ dependencies {
     implementation(projects.feature.setup.impl)
     implementation(projects.feature.setup.presentation)
 
+    implementation(projects.feature.remoteDevices.impl)
+    implementation(projects.feature.remoteDevices.presentation)
+
     implementation(libs.timber)
     implementation(libs.gson)
     implementation(libs.viewpump)

@@ -46,4 +46,7 @@ internal object RoomModule {
 
     @Provides
     fun provideDisabledAppDao(database: AppDatabase): DisabledAppDao = database.disabledApps()
+    
+    @Provides
+    fun provideRemoteDeviceDao(database: AppDatabase): RemoteDeviceDao = database.remoteDeviceDao()
 }

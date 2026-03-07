@@ -8,6 +8,7 @@
     <include app:graph="@navigation/crashes" />
     <include app:graph="@navigation/recordings" />
     <include app:graph="@navigation/settings" />
+    <include app:graph="@navigation/remote_devices"
 
     <fragment
         android:id="@+id/setupFragment"

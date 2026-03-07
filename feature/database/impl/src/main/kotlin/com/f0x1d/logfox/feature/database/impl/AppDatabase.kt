@@ -25,8 +25,9 @@ import com.f0x1d.logfox.feature.database.impl.entity.UserFilterRoomEntity
         LogRecordingRoomEntity::class,
         UserFilterRoomEntity::class,
         DisabledAppRoomEntity::class,
+        RemoteDeviceRoomEntity::class,
     ],
-    version = 17,
+    version = 18,
     autoMigrations = [
         AutoMigration(
             from = 12,
@@ -109,4 +110,5 @@ internal abstract class AppDatabase : RoomDatabase() {
     abstract fun logRecordings(): LogRecordingDao
     abstract fun userFilters(): UserFilterDao
     abstract fun disabledApps(): DisabledAppDao
+    abstract fun remoteDeviceDao(): RemoteDeviceDao
 }

@@ -19,6 +19,11 @@
             android:title="@string/notifications"
             android:key="pref_settings_notifications"
             android:icon="@drawable/ic_settings_notifications" />
+        <Preference
+            android:key="remote_devices"
+            android:title="@string/remote_devices"
+            android:icon="@drawable/ic_adb"
+            app:fragment="com.f0x1d.logfox.feature.remote.devices.presentation.list.ui.RemoteDevicesFragment" />
     </PreferenceCategory>
 
     <PreferenceCategory

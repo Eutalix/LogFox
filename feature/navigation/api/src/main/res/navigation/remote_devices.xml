@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/remote_devices_nav"
+    app:startDestination="@id/remoteDevicesFragment">
+
+    <fragment
+        android:id="@+id/remoteDevicesFragment"
+        android:name="com.f0x1d.logfox.feature.remote.devices.presentation.list.ui.RemoteDevicesFragment"
+        android:label="@string/remote_devices">
+
+        <action
+            android:id="@+id/action_remoteDevicesFragment_to_editRemoteDeviceFragment"
+            app:destination="@id/editRemoteDeviceFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/editRemoteDeviceFragment"
+        android:name="com.f0x1d.logfox.feature.remote.devices.presentation.edit.ui.EditRemoteDeviceFragment"
+        android:label="@string/add_device">
+
+        <argument
+            android:name="device_id"
+            android:defaultValue="0L"
+            app:argType="long" />
+    </fragment>
+
+    <action
+        android:id="@+id/action_global_remoteDevicesFragment"
+        app:destination="@id/remoteDevicesFragment" />
+
+</navigation>
