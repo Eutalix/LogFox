@@ -46,7 +46,7 @@ internal class RemoteDevicesRepositoryImpl @Inject constructor(
             remoteDeviceDataSource.insert(entity)
         } else {
             remoteDeviceDataSource.update(entity)
-            entity.id
+            entity.id ?: 0L
         }
     }
 

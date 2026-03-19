@@ -15,13 +15,18 @@ sealed interface TerminalType {
         override val key = "shizuku"
     }
 
+    data class Remote(val deviceId: String) : TerminalType {
+        override val key = "remote_$deviceId"
+    }
+
     companion object {
         val entries: List<TerminalType> = listOf(Default, Root, Shizuku)
 
-        fun fromKey(key: String): TerminalType = when (key) {
-            Default.key -> Default
-            Root.key -> Root
-            Shizuku.key -> Shizuku
+        fun fromKey(key: String): TerminalType = when {
+            key == Default.key -> Default
+            key == Root.key -> Root
+            key == Shizuku.key -> Shizuku
+            key.startsWith("remote_") -> Remote(key.removePrefix("remote_"))
             else -> Default
         }
     }

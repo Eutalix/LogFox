@@ -16,7 +16,7 @@ internal class RemoteTerminal(
     internal val connection: AdbConnection,
 ) : Terminal {
 
-    override val type: TerminalType = RemoteTerminalType(device.id.toString())
+    override val type: TerminalType = TerminalType.Remote(device.id.toString())
 
     override val title: Int = 0 // Will use device name instead
 
@@ -61,8 +61,4 @@ internal class RemoteTerminal(
     override suspend fun exit() {
         connection.close()
     }
-}
-
-data class RemoteTerminalType(val deviceId: String) : TerminalType {
-    override val key: String = "remote_$deviceId"
 }
