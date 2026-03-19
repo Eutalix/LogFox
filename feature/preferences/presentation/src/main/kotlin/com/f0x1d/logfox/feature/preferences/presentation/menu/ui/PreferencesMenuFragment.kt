@@ -119,7 +119,7 @@ internal class PreferencesMenuFragment :
 
             is PreferencesMenuSideEffect.NavigateToRemoteDevices -> {
                 findNavController().navigate(
-                    com.f0x1d.logfox.feature.navigation.api.R.id.action_global_remoteDevicesFragment
+                    com.f0x1d.logfox.feature.navigation.api.R.id.remote_devices_nav
                 )
             }
 
