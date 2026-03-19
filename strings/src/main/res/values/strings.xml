@@ -180,6 +180,7 @@
     <string name="no_remote_devices">No remote devices added</string>
     <string name="add_device">Add Device</string>
     <string name="edit_device">Edit Device</string>
+    <string name="edit">Edit</string>
     <string name="device_name">Device Name (optional)</string>
     <string name="host">Host (IP address)</string>
     <string name="port">Port</string>
