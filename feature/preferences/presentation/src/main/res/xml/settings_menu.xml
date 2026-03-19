@@ -22,8 +22,7 @@
         <Preference
             android:key="remote_devices"
             android:title="@string/remote_devices"
-            android:icon="@drawable/ic_adb"
-            app:fragment="com.f0x1d.logfox.feature.remote.devices.presentation.list.ui.RemoteDevicesFragment" />
+            android:icon="@drawable/ic_adb" />
     </PreferenceCategory>
 
     <PreferenceCategory

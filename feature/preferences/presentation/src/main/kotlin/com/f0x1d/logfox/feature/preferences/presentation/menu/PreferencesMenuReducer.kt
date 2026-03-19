@@ -28,6 +28,10 @@ internal class PreferencesMenuReducer @Inject constructor(private val timberLogF
             state.withSideEffects(PreferencesMenuSideEffect.NavigateToNotificationsSettings)
         }
 
+        is PreferencesMenuCommand.RemoteDevicesClicked -> {
+            state.withSideEffects(PreferencesMenuSideEffect.NavigateToRemoteDevices)
+        }
+
         is PreferencesMenuCommand.LinksClicked -> {
             state.withSideEffects(PreferencesMenuSideEffect.NavigateToLinks)
         }

@@ -8,6 +8,7 @@ internal sealed interface PreferencesMenuSideEffect {
     data object NavigateToServiceSettings : PreferencesMenuSideEffect
     data object NavigateToCrashesSettings : PreferencesMenuSideEffect
     data object NavigateToNotificationsSettings : PreferencesMenuSideEffect
+    data object NavigateToRemoteDevices : PreferencesMenuSideEffect
     data object NavigateToLinks : PreferencesMenuSideEffect
     data class ShareLogs(val file: File) : PreferencesMenuSideEffect
 }

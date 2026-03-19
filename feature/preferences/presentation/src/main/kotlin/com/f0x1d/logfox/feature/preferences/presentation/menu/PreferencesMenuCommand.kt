@@ -5,6 +5,7 @@ internal sealed interface PreferencesMenuCommand {
     data object ServiceSettingsClicked : PreferencesMenuCommand
     data object CrashesSettingsClicked : PreferencesMenuCommand
     data object NotificationsSettingsClicked : PreferencesMenuCommand
+    data object RemoteDevicesClicked : PreferencesMenuCommand
     data object LinksClicked : PreferencesMenuCommand
     data object ShareLogsClicked : PreferencesMenuCommand
 }

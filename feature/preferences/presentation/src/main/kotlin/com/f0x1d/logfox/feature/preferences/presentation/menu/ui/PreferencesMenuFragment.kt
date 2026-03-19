@@ -51,6 +51,10 @@ internal class PreferencesMenuFragment :
             send(PreferencesMenuCommand.NotificationsSettingsClicked)
             true
         }
+        findPreference<Preference>("remote_devices")?.setOnPreferenceClickListener {
+            send(PreferencesMenuCommand.RemoteDevicesClicked)
+            true
+        }
         findPreference<Preference>("pref_settings_links")?.setOnPreferenceClickListener {
             send(PreferencesMenuCommand.LinksClicked)
             true
@@ -110,6 +114,12 @@ internal class PreferencesMenuFragment :
             is PreferencesMenuSideEffect.NavigateToNotificationsSettings -> {
                 findNavController().navigate(
                     Directions.action_settingsMenuFragment_to_settingsNotificationsFragment,
+                )
+            }
+
+            is PreferencesMenuSideEffect.NavigateToRemoteDevices -> {
+                findNavController().navigate(
+                    com.f0x1d.logfox.feature.navigation.api.R.id.action_global_remoteDevicesFragment
                 )
             }
 
