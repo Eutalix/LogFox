@@ -1,5 +1,6 @@
 package com.f0x1d.logfox.feature.remote.devices.impl.adb
 
+import dadb.AdbKeyPair
 import dadb.Dadb
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -18,8 +19,7 @@ internal class AdbConnection(
 
     suspend fun connect() = withContext(Dispatchers.IO) {
         Timber.d("Connecting to $host:$port")
-        dadb = Dadb.discover(host, port)
-            ?: throw AdbConnectionException("Failed to connect to $host:$port")
+        dadb = Dadb.create(host, port, AdbKeyPair.readDefault())
         Timber.d("Connected to $host:$port")
     }
 
@@ -28,8 +28,8 @@ internal class AdbConnection(
         val commandString = command.joinToString(" ")
         Timber.d("Executing command: $commandString")
 
-        val stream = dadb.openShell(commandString)
-        AdbShellStream(stream)
+        val response = dadb.shell(commandString)
+        AdbShellStream(response)
     }
 
     override fun close() {
@@ -42,16 +42,14 @@ internal class AdbConnection(
 }
 
 internal class AdbShellStream(
-    private val shellStream: dadb.AdbShellStream,
+    private val response: dadb.AdbShellResponse,
 ) : Closeable {
 
-    val output: InputStream get() = shellStream.openInputStream()
+    val output: InputStream get() = response.output.byteInputStream()
 
-    override fun close() {
-        runCatching {
-            shellStream.close()
-        }
-    }
+    val allOutput: String get() = response.allOutput
+
+    override fun close() = Unit
 }
 
 internal class AdbConnectionException(message: String) : Exception(message)

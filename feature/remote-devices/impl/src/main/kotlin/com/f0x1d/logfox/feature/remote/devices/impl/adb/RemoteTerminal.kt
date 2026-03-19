@@ -11,12 +11,12 @@ import timber.log.Timber
 import java.io.ByteArrayInputStream
 import java.io.ByteArrayOutputStream
 
-class RemoteTerminal(
+internal class RemoteTerminal(
     private val device: RemoteDevice,
-    private val connection: AdbConnection,
+    internal val connection: AdbConnection,
 ) : Terminal {
 
-    override val type: TerminalType = TerminalType.Remote(device.id.toString())
+    override val type: TerminalType = RemoteTerminalType(device.id.toString())
 
     override val title: Int = 0 // Will use device name instead
 
@@ -28,7 +28,7 @@ class RemoteTerminal(
         runCatching {
             val stream = connection.executeCommand(*command)
             stream.use {
-                val output = it.output.bufferedReader().readText()
+                val output = it.allOutput
                 TerminalResult(
                     exitCode = 0,
                     output = output,
@@ -63,9 +63,6 @@ class RemoteTerminal(
     }
 }
 
-// Extension for TerminalType
-data class Remote(val deviceId: String) : TerminalType {
+data class RemoteTerminalType(val deviceId: String) : TerminalType {
     override val key: String = "remote_$deviceId"
 }
-
-private fun TerminalType.Companion.Remote(deviceId: String): TerminalType = Remote(deviceId)

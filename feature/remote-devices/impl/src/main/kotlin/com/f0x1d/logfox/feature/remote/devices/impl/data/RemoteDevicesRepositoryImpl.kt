@@ -54,37 +54,41 @@ internal class RemoteDevicesRepositoryImpl @Inject constructor(
         remoteDeviceDataSource.delete(device.toEntity())
     }
 
-    override suspend fun connect(device: RemoteDevice) = withContext(ioDispatcher) {
-        Timber.d("Connecting to device: ${device.name}")
-        _connectionState.value = ConnectionState.Connecting
+    override suspend fun connect(device: RemoteDevice) {
+        withContext(ioDispatcher) {
+            Timber.d("Connecting to device: ${device.name}")
+            _connectionState.value = ConnectionState.Connecting
 
-        runCatching {
-            // Disconnect existing connection if any
-            currentConnection?.close()
+            try {
+                // Disconnect existing connection if any
+                currentConnection?.close()
 
-            val connection = AdbConnection(device.host, device.port)
-            connection.connect()
+                val connection = AdbConnection(device.host, device.port)
+                connection.connect()
 
-            currentConnection = connection
-            currentTerminal = RemoteTerminal(device, connection)
+                currentConnection = connection
+                currentTerminal = RemoteTerminal(device, connection)
 
-            _connectionState.value = ConnectionState.Connected(device)
-            Timber.d("Connected to device: ${device.name}")
-        }.onFailure { throwable ->
-            Timber.e(throwable, "Failed to connect to device: ${device.name}")
-            _connectionState.value = ConnectionState.Error(
-                throwable.message ?: "Unknown error"
-            )
+                _connectionState.value = ConnectionState.Connected(device)
+                Timber.d("Connected to device: ${device.name}")
+            } catch (throwable: Throwable) {
+                Timber.e(throwable, "Failed to connect to device: ${device.name}")
+                _connectionState.value = ConnectionState.Error(
+                    throwable.message ?: "Unknown error"
+                )
+            }
         }
     }
 
-    override suspend fun disconnect() = withContext(ioDispatcher) {
-        Timber.d("Disconnecting from device")
-        currentTerminal?.exit()
-        currentConnection?.close()
-        currentConnection = null
-        currentTerminal = null
-        _connectionState.value = ConnectionState.Disconnected
+    override suspend fun disconnect() {
+        withContext(ioDispatcher) {
+            Timber.d("Disconnecting from device")
+            currentTerminal?.exit()
+            currentConnection?.close()
+            currentConnection = null
+            currentTerminal = null
+            _connectionState.value = ConnectionState.Disconnected
+        }
     }
 
     fun getActiveTerminal(): RemoteTerminal? = currentTerminal
