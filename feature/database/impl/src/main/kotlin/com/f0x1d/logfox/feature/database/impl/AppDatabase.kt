@@ -10,6 +10,7 @@ import androidx.room.migration.Migration
 import com.f0x1d.logfox.feature.database.impl.data.dao.AppCrashDao
 import com.f0x1d.logfox.feature.database.impl.data.dao.DisabledAppDao
 import com.f0x1d.logfox.feature.database.impl.data.dao.LogRecordingDao
+import com.f0x1d.logfox.feature.database.impl.data.dao.RemoteDeviceDao
 import com.f0x1d.logfox.feature.database.impl.data.dao.UserFilterDao
 import com.f0x1d.logfox.feature.database.impl.entity.AllowedLevelsConverter
 import com.f0x1d.logfox.feature.database.impl.entity.AppCrashRoomEntity
@@ -17,6 +18,7 @@ import com.f0x1d.logfox.feature.database.impl.entity.CrashTypeConverter
 import com.f0x1d.logfox.feature.database.impl.entity.DisabledAppRoomEntity
 import com.f0x1d.logfox.feature.database.impl.entity.FileConverter
 import com.f0x1d.logfox.feature.database.impl.entity.LogRecordingRoomEntity
+import com.f0x1d.logfox.feature.database.impl.entity.RemoteDeviceRoomEntity
 import com.f0x1d.logfox.feature.database.impl.entity.UserFilterRoomEntity
 
 @Database(
@@ -49,6 +51,10 @@ import com.f0x1d.logfox.feature.database.impl.entity.UserFilterRoomEntity
         AutoMigration(
             from = 16,
             to = 17,
+        ),
+        AutoMigration(
+            from = 17,
+            to = 18,
         ),
     ],
 )

@@ -6,6 +6,7 @@ import com.f0x1d.logfox.feature.database.impl.AppDatabase
 import com.f0x1d.logfox.feature.database.impl.data.dao.AppCrashDao
 import com.f0x1d.logfox.feature.database.impl.data.dao.DisabledAppDao
 import com.f0x1d.logfox.feature.database.impl.data.dao.LogRecordingDao
+import com.f0x1d.logfox.feature.database.impl.data.dao.RemoteDeviceDao
 import com.f0x1d.logfox.feature.database.impl.data.dao.UserFilterDao
 import dagger.Module
 import dagger.Provides
