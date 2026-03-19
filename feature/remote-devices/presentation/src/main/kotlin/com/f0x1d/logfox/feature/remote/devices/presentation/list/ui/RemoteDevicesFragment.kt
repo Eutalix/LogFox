@@ -11,8 +11,8 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.f0x1d.logfox.core.context.isHorizontalOrientation
 import com.f0x1d.logfox.core.tea.BaseStoreFragment
+import com.f0x1d.logfox.feature.navigation.api.R as NavigationR
 import com.f0x1d.logfox.feature.remote.devices.api.model.RemoteDevice
-import com.f0x1d.logfox.feature.remote.devices.presentation.R
 import com.f0x1d.logfox.feature.remote.devices.presentation.databinding.FragmentRemoteDevicesBinding
 import com.f0x1d.logfox.feature.remote.devices.presentation.list.RemoteDevicesCommand
 import com.f0x1d.logfox.feature.remote.devices.presentation.list.RemoteDevicesSideEffect
@@ -97,12 +97,12 @@ internal class RemoteDevicesFragment :
     override fun handleSideEffect(sideEffect: RemoteDevicesSideEffect) {
         when (sideEffect) {
             is RemoteDevicesSideEffect.NavigateToAddDevice -> {
-                findNavController().navigate(R.id.action_remoteDevicesFragment_to_editRemoteDeviceFragment)
+                findNavController().navigate(NavigationR.id.action_remoteDevicesFragment_to_editRemoteDeviceFragment)
             }
 
             is RemoteDevicesSideEffect.NavigateToEditDevice -> {
                 findNavController().navigate(
-                    resId = R.id.action_remoteDevicesFragment_to_editRemoteDeviceFragment,
+                    resId = NavigationR.id.action_remoteDevicesFragment_to_editRemoteDeviceFragment,
                     args = bundleOf("device_id" to sideEffect.deviceId),
                 )
             }

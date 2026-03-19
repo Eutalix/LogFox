@@ -17,6 +17,8 @@ dependencies {
     implementation(projects.core.ui.view)
     implementation(projects.core.di)
     implementation(projects.strings)
+    implementation(projects.core.recycler)
+    implementation(projects.core.context)
 
     implementation(libs.bundles.androidx)
     implementation(libs.bundles.androidx.navigation)
